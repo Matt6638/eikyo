@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'self'; style-src 'unsafe-inline'; img-src data: 'self'; connect-src 'self' https://*.googleapis.com; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
-<meta name="app-build" content="2026-11-04 20:00">
+<meta name="app-build" content="2026-11-04 21:00">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,8 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:"＋";position:absolute;right:14px;top:12px;color:var(--navy);font-weight:bold}
 details[open] summary::after{content:"－"}
 details[open] summary{border-bottom:1px solid var(--line);background:#f8f9fc}
-.no{font-size:0.6875rem;color:var(--sub);margin-right:6px}
+.no{display:inline-block;font-size:0.75rem;font-weight:bold;background:var(--navy);color:#fff;border-radius:4px;padding:0 7px;margin-right:6px;line-height:1.6}
+.card.flash{box-shadow:0 0 0 3px #d49a00}
 .name{font-size:0.8125rem;font-weight:bold;color:var(--navy)}
 .eff{display:block;margin-top:4px;font-size:0.9375rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 details[open] .eff{-webkit-line-clamp:unset;display:block}
@@ -157,6 +158,7 @@ header h1{padding-right:160px}
 <div id="helpPanel" class="setpanel" hidden><div class="helpbox"><span class="lbl">この一覧の見方</span><ul>
 <li>各項目の見出しは「効果（どういった人がどうなるか）」です。タップすると効能・手法・本書の根拠・注意点が開きます。</li>
 <li>掲載ページは本に印刷されたページ番号です。</li>
+<li>各項目には通し番号（No.1〜No.177）が付いています。検索欄に番号（例：66）を入れると、その項目だけが表示されます。</li>
 <li>「画像確認済」は原本画像で記載を確認したもの、「OCRのみ」は文字認識から要約したもので、数値は含みません。</li>
 <li>本書の事例が営業以外（募金・取調べ・医療など）の場合、効能・効果は営業場面に置き換えて記載しています。置き換え部分は本書の主張ではなく作成者の解釈で、元の事例は「本書の根拠」に記載しています。</li>
 <li>本書が悪用・詐欺の手口として紹介しているものは、見抜き方として掲載し、注意点に記載しています。</li>
@@ -166,7 +168,7 @@ header h1{padding-right:160px}
 <div id="setPanel" class="setpanel" hidden><div class="setrow"><span class="lbl">文字の大きさ</span><div class="seg" id="fsSeg"><button type="button" data-fs="0.875">小</button><button type="button" data-fs="1">標準</button><button type="button" data-fs="1.15">大</button><button type="button" data-fs="1.3">特大</button></div></div>
 <div class="setrow" style="margin-top:12px"><span class="lbl">ログイン中</span><span id="who" class="who"></span><button type="button" class="sbtn" id="logoutBtn">ログアウト</button></div>
 <p class="setnote">お気に入りとメモは、ログインした人ごとに保存されます。同じ人がログインすれば、iPhoneでもiPadでも同じ内容になります。ログアウトすると、この端末に保存した本文の控えも消えます。</p></div>
-<div class="bar"><div class="mode" id="modeSeg"><button type="button" data-mode="goal">誰をどうしたいから探す</button><button type="button" data-mode="ch">章から探す</button></div><input id="q" type="search" placeholder="キーワードで絞り込み（例：紹介、権威、期限）">
+<div class="bar"><div class="mode" id="modeSeg"><button type="button" data-mode="goal">誰をどうしたいから探す</button><button type="button" data-mode="ch">章から探す</button></div><input id="q" type="search" placeholder="キーワードか番号で絞り込み（例：紹介、期限、66）">
 <div class="chips" id="chipRow"><a class="chip on" href="#top" data-ch="0">すべて</a><a class="chip favchip" href="#top" data-ch="fav">★ お気に入り <span id="favN">0</span></a><a class="chip" href="#ch1" data-ch="1">第1章 影響力の武器</a><a class="chip" href="#ch2" data-ch="2">第2章 返報性</a><a class="chip" href="#ch3" data-ch="3">第3章 コミットメントと一貫性</a><a class="chip" href="#ch4" data-ch="4">第4章 社会的証明</a><a class="chip" href="#ch5" data-ch="5">第5章 好意</a><a class="chip" href="#ch6" data-ch="6">第6章 権威</a><a class="chip" href="#ch7" data-ch="7">第7章 希少性</a><a class="chip" href="#ch8" data-ch="8">第8章 手っとり早い影響力</a></div></div>
 <div id="login" class="login hide"><div class="lbox">
 <p class="ltitle"><span class="lbl">ログイン</span></p>
@@ -183,7 +185,7 @@ header h1{padding-right:160px}
 <p id="favEmpty" class="hide" style="text-align:center;color:var(--sub);padding:30px 0">お気に入りはまだありません。各項目の ☆ を押すと、ここに並びます。</p>
 <div id="updateBar" class="tbar"><div class="tx" id="updateText">新しい版があります</div><button type="button" onclick="gApplyUpdate()">いま更新する</button></div>
 <div id="addBar" class="tbar"><div class="tx"><b>ホーム画面に追加すると、アプリとして使えます</b><small id="abHow"></small></div><button type="button" id="abGo" style="display:none">追加する</button><button type="button" class="x" id="abClose" aria-label="閉じる">×</button></div>
-<p class="ver">版：2026-11-04 20:00</p>
+<p class="ver">版：2026-11-04 21:00</p>
 </main>
 <script>
 (function(){
@@ -278,16 +280,25 @@ document.getElementById('goalBack').addEventListener('click',function(){gSel=nul
 function paint(){var st=S(),n=0;cards.forEach(function(c){var id=c.dataset.id,f=!!st.fav[id],b=c.querySelector('.fav');b.classList.toggle('on',f);b.textContent=f?'★':'☆';b.setAttribute('aria-pressed',f?'true':'false');if(f)n++;
  var m=st.memo[id]||'';c.classList.toggle('memo-on',!!String(m).trim());var ta=c.querySelector('.memo-in');if(document.activeElement!==ta)ta.value=m;});document.getElementById('favN').textContent=n;}
 function apply(){var st=S(),t=q.value.trim().toLowerCase(),n=0;
- var showPick=mode==='goal'&&!gSel&&!t;pick.classList.toggle('hide',!showPick);gHead.classList.toggle('hide',!(mode==='goal'&&gSel));
+ var nm=t.replace(/[０-９]/g,function(d){return String.fromCharCode(d.charCodeAt(0)-0xFEE0);}).match(/^(?:no\.?\s*)?(\d{1,3})$/);var numT=nm?String(parseInt(nm[1],10)):null;
+ var showPick=mode==='goal'&&!gSel&&!t;
+ if(numT){pick.classList.add('hide');gHead.classList.add('hide');}pick.classList.toggle('hide',!showPick);gHead.classList.toggle('hide',!(mode==='goal'&&gSel));
  if(mode==='goal'&&gSel){document.getElementById('ghWho').textContent=GOALS[gSel][0];document.getElementById('ghHow').textContent=GOALS[gSel][1];}
  cards.forEach(function(c){var id=c.dataset.id;var inCh;
   if(mode==='goal'){inCh=!showPick&&(!gSel||(' '+c.dataset.g+' ').indexOf(' '+gSel+' ')>=0);}
   else inCh=cur==='0'||(cur==='fav'?!!st.fav[id]:c.dataset.ch===cur);
-  var hay=(c.dataset.q+' '+(st.memo[id]||'')).toLowerCase();var ok=inCh&&(!t||hay.indexOf(t)>=0);c.classList.toggle('hide',!ok);if(ok)n++;});
+  var ok;if(numT){ok=noOf(c)===numT;}else{var hay=(c.dataset.q+' '+(st.memo[id]||'')).toLowerCase();ok=inCh&&(!t||hay.indexOf(t)>=0);}c.classList.toggle('hide',!ok);if(ok)n++;});
  secs.forEach(function(s){var k=s.querySelectorAll('.card:not(.hide)').length;s.classList.toggle('hide',!k);s.querySelector('.cnt').textContent=k+'件';});
  var fe=mode==='ch'&&cur==='fav'&&!t&&n===0;document.getElementById('favEmpty').classList.toggle('hide',!fe);
  if(mode==='goal'&&gSel)document.getElementById('ghN').textContent=n+'件';
  document.getElementById('empty').classList.toggle('hide',n>0||fe||showPick);}
+function noOf(c){var e=c.querySelector('.no');return e?String(parseInt(e.textContent.replace(/[^0-9]/g,''),10)):'';}
+function openNo(num){var target=null;cards.forEach(function(c){if(noOf(c)===String(num))target=c;});if(!target)return;
+ q.value=String(num);apply();target.open=true;
+ setTimeout(function(){var bar=document.querySelector('.bar');var y=target.getBoundingClientRect().top+window.scrollY-((bar?bar.offsetHeight:0)+8);window.scrollTo(0,Math.max(0,y));
+  target.classList.add('flash');setTimeout(function(){target.classList.remove('flash');},1600);},60);}
+function fromHash(){var m=(location.hash||'').match(/^#no(\d{1,3})$/i);if(m)openNo(parseInt(m[1],10));}
+window.addEventListener('hashchange',fromHash);
 q.addEventListener('input',apply);
 chips.forEach(function(ch){ch.addEventListener('click',function(e){e.preventDefault();cur=ch.dataset.ch;chips.forEach(function(x){x.classList.toggle('on',x===ch);});apply();window.scrollTo(0,0);});});
 cards.forEach(function(c){var id=c.dataset.id;
@@ -296,7 +307,7 @@ cards.forEach(function(c){var id=c.dataset.id;
  ta.addEventListener('input',function(){var v=ta.value;clearTimeout(tm);tm=setTimeout(function(){H.memo(id,v);
   sv.textContent=navigator.onLine?'保存しました':'保存しました（ネットにつながったときに同期します）';sv.classList.add('on');setTimeout(function(){sv.classList.remove('on');},1500);c.classList.toggle('memo-on',!!v.trim());},600);});
 });
-paint();setMode(mode);
+paint();setMode(mode);fromHash();
 return {repaint:function(){paint();if(cur==='fav'||q.value.trim())apply();}};
 }
 })();
