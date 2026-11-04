@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'self'; style-src 'unsafe-inline'; img-src data: 'self'; connect-src 'self' https://*.googleapis.com; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
-<meta name="app-build" content="2026-11-04 19:30">
+<meta name="app-build" content="2026-11-04 20:00">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,7 +22,8 @@ header p{margin:4px 0 0;font-size:0.75rem;opacity:.85}
 .chips{display:flex;gap:6px;overflow-x:auto;padding-top:8px;-webkit-overflow-scrolling:touch}
 .chip{flex:0 0 auto;font-size:0.8125rem;padding:5px 11px;border-radius:16px;border:1px solid var(--navy);color:var(--navy);text-decoration:none;white-space:nowrap;background:#fff}
 .chip.on{background:var(--navy);color:#fff}
-main{max-width:860px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bottom) + 40px)}
+main{max-width:1240px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bottom) + 40px)}
+.chap,#goalHead,#empty,#favEmpty,.loading,.ver{max-width:836px;margin-left:auto;margin-right:auto}
 h2{font-size:1.125rem;margin:22px 4px 10px;display:flex;align-items:center;gap:8px}
 h2 .cnt{margin-left:auto;font-size:0.75rem;color:var(--sub);font-weight:normal}
 .lbl{display:inline-block;background:var(--navy);color:#fff;font-size:0.75rem;font-weight:bold;padding:2px 8px;border-radius:4px;white-space:nowrap}
@@ -96,7 +97,7 @@ details[open] .eff{-webkit-line-clamp:unset;display:block}
 .mode button{flex:1;font:inherit;font-size:0.875rem;padding:8px 6px;border:0;background:#fff;color:var(--navy)}
 .mode button+button{border-left:1px solid var(--navy)}
 .mode button.on{background:var(--navy);color:#fff;font-weight:bold}
-.goalpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-top:4px}
+.goalpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin-top:4px}
 .goalpick.hide,.goalhead.hide{display:none}
 .gpnote{grid-column:1/-1;margin:4px 2px;font-size:0.8125rem;color:var(--sub)}
 .gp{font:inherit;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--txt);display:flex;flex-direction:column;gap:5px;position:relative;cursor:pointer}
@@ -182,7 +183,7 @@ header h1{padding-right:160px}
 <p id="favEmpty" class="hide" style="text-align:center;color:var(--sub);padding:30px 0">お気に入りはまだありません。各項目の ☆ を押すと、ここに並びます。</p>
 <div id="updateBar" class="tbar"><div class="tx" id="updateText">新しい版があります</div><button type="button" onclick="gApplyUpdate()">いま更新する</button></div>
 <div id="addBar" class="tbar"><div class="tx"><b>ホーム画面に追加すると、アプリとして使えます</b><small id="abHow"></small></div><button type="button" id="abGo" style="display:none">追加する</button><button type="button" class="x" id="abClose" aria-label="閉じる">×</button></div>
-<p class="ver">版：2026-11-04 19:30</p>
+<p class="ver">版：2026-11-04 20:00</p>
 </main>
 <script>
 (function(){
