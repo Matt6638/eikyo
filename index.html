@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'self'; style-src 'unsafe-inline'; img-src data: 'self'; connect-src 'self' https://*.googleapis.com; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<meta name="app-build" content="2026-11-04 19:00">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="影響力の武器">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1F3864">
+<title>影響力の武器 営業ノウハウ一覧</title>
+<style>
+:root{--navy:#1F3864;--bg:#f4f5f8;--line:#d9dce3;--txt:#1d2330;--sub:#5a6273}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Hiragino Sans","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;font-size:1rem;line-height:1.6;-webkit-text-size-adjust:100%}
+header{background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top) + 16px) 16px 14px}
+header h1{margin:0;font-size:20px;line-height:1.4}
+header p{margin:4px 0 0;font-size:0.75rem;opacity:.85}
+.bar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px 12px}
+#q{width:100%;font-size:1rem;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-top:8px;-webkit-overflow-scrolling:touch}
+.chip{flex:0 0 auto;font-size:0.8125rem;padding:5px 11px;border-radius:16px;border:1px solid var(--navy);color:var(--navy);text-decoration:none;white-space:nowrap;background:#fff}
+.chip.on{background:var(--navy);color:#fff}
+main{max-width:860px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bottom) + 40px)}
+h2{font-size:1.125rem;margin:22px 4px 10px;display:flex;align-items:center;gap:8px}
+h2 .cnt{margin-left:auto;font-size:0.75rem;color:var(--sub);font-weight:normal}
+.lbl{display:inline-block;background:var(--navy);color:#fff;font-size:0.75rem;font-weight:bold;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 0 10px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:12px 40px 12px 14px;position:relative;display:block}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";position:absolute;right:14px;top:12px;color:var(--navy);font-weight:bold}
+details[open] summary::after{content:"－"}
+details[open] summary{border-bottom:1px solid var(--line);background:#f8f9fc}
+.no{font-size:0.6875rem;color:var(--sub);margin-right:6px}
+.name{font-size:0.8125rem;font-weight:bold;color:var(--navy)}
+.eff{display:block;margin-top:4px;font-size:0.9375rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+details[open] .eff{-webkit-line-clamp:unset;display:block}
+.det{padding:6px 14px 14px}
+.blk{margin-top:12px}
+.blk p{margin:6px 0 0;font-size:0.9375rem}
+.blk.sub p{color:#38404f}
+.blk.warn .lbl{background:#8a2a2a}
+.meta{margin-top:14px;font-size:0.75rem;color:var(--sub)}
+.ok,.ocr{font-size:0.6875rem;padding:1px 6px;border-radius:4px;margin-left:6px}
+.ok{background:#e3ecf9;color:var(--navy)} .ocr{background:#f3e9d6;color:#7a5410}
+.note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:0.8125rem;color:#38404f}
+.note ul{margin:6px 0 0;padding-left:1.2em}
+.hide{display:none}
+#empty{text-align:center;color:var(--sub);padding:30px 0}
+.fav{float:left;font:inherit;font-size:1.25rem;line-height:1;background:none;border:0;padding:0 8px 0 0;margin-top:-2px;color:#b8bfcc;cursor:pointer}
+.fav.on{color:#d49a00}
+.hasmemo{display:none;font-size:0.6875rem;font-weight:bold;background:var(--navy);color:#fff;border-radius:4px;padding:0 6px;margin-right:6px}
+.card.memo-on .hasmemo{display:inline-block}
+.memo-in{width:100%;margin-top:6px;font:inherit;font-size:0.9375rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fffdf5;resize:vertical}
+.saved{display:block;height:1.2em;font-size:0.75rem;color:var(--sub);opacity:0;transition:opacity .3s}
+.saved.on{opacity:1}
+.favchip{border-color:#d49a00;color:#8a6400}
+.favchip.on{background:#d49a00;color:#fff;border-color:#d49a00}
+.chap[data-ch="1"] h2 .lbl{background:#1F3864}
+.chip[data-ch="1"]{border-color:#1F3864;color:#1F3864}
+.chip[data-ch="1"].on{background:#1F3864;color:#fff}
+.chap[data-ch="2"] h2 .lbl{background:#0F6B6B}
+.chip[data-ch="2"]{border-color:#0F6B6B;color:#0F6B6B}
+.chip[data-ch="2"].on{background:#0F6B6B;color:#fff}
+.chap[data-ch="3"] h2 .lbl{background:#2E6B2E}
+.chip[data-ch="3"]{border-color:#2E6B2E;color:#2E6B2E}
+.chip[data-ch="3"].on{background:#2E6B2E;color:#fff}
+.chap[data-ch="4"] h2 .lbl{background:#8A4B12}
+.chip[data-ch="4"]{border-color:#8A4B12;color:#8A4B12}
+.chip[data-ch="4"].on{background:#8A4B12;color:#fff}
+.chap[data-ch="5"] h2 .lbl{background:#9B2335}
+.chip[data-ch="5"]{border-color:#9B2335;color:#9B2335}
+.chip[data-ch="5"].on{background:#9B2335;color:#fff}
+.chap[data-ch="6"] h2 .lbl{background:#5B3A8A}
+.chip[data-ch="6"]{border-color:#5B3A8A;color:#5B3A8A}
+.chip[data-ch="6"].on{background:#5B3A8A;color:#fff}
+.chap[data-ch="7"] h2 .lbl{background:#3D5A80}
+.chip[data-ch="7"]{border-color:#3D5A80;color:#3D5A80}
+.chip[data-ch="7"].on{background:#3D5A80;color:#fff}
+.chap[data-ch="8"] h2 .lbl{background:#6B6B1A}
+.chip[data-ch="8"]{border-color:#6B6B1A;color:#6B6B1A}
+.chip[data-ch="8"].on{background:#6B6B1A;color:#fff}
+.chp[data-ch="1"]{background:#1F3864}
+.chp[data-ch="2"]{background:#0F6B6B}
+.chp[data-ch="3"]{background:#2E6B2E}
+.chp[data-ch="4"]{background:#8A4B12}
+.chp[data-ch="5"]{background:#9B2335}
+.chp[data-ch="6"]{background:#5B3A8A}
+.chp[data-ch="7"]{background:#3D5A80}
+.chp[data-ch="8"]{background:#6B6B1A}
+.gchs{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.chp{display:inline-block;color:#fff;font-size:0.6875rem;font-weight:bold;border-radius:4px;padding:1px 6px;line-height:1.6}
+.chp b{margin-left:4px;font-weight:normal;opacity:.9}
+.mode{display:flex;border:1px solid var(--navy);border-radius:10px;overflow:hidden;margin-bottom:8px}
+.mode button{flex:1;font:inherit;font-size:0.875rem;padding:8px 6px;border:0;background:#fff;color:var(--navy)}
+.mode button+button{border-left:1px solid var(--navy)}
+.mode button.on{background:var(--navy);color:#fff;font-weight:bold}
+.goalpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-top:4px}
+.goalpick.hide,.goalhead.hide{display:none}
+.gpnote{grid-column:1/-1;margin:4px 2px;font-size:0.8125rem;color:var(--sub)}
+.gp{font:inherit;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--txt);display:flex;flex-direction:column;gap:5px;position:relative;cursor:pointer}
+.gw,.gh{display:block;font-size:0.9375rem;line-height:1.5}
+.gw .lbl,.gh .lbl{margin-right:6px;font-size:0.6875rem}
+.lbl2{background:#4a5d85}
+.gw{font-weight:bold}
+.gc{position:absolute;right:10px;top:10px;font-size:0.75rem;color:var(--sub)}
+.goalhead{background:#fff;border:1px solid var(--navy);border-radius:12px;padding:10px 12px;margin:4px 0 6px}
+.ghx{position:relative;margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.ghx .gc{top:0}
+.sbtn{font:inherit;font-size:0.875rem;padding:6px 14px;border:1px solid var(--navy);border-radius:8px;background:#fff;color:var(--navy)}
+.setnote{max-width:860px;margin:8px auto 0;font-size:0.75rem;color:var(--sub);line-height:1.6}
+
+html{font-size:16px}
+header{position:relative}
+.hbtns{position:absolute;right:12px;top:calc(env(safe-area-inset-top) + 12px);display:flex;gap:6px}
+.setbtn{font:inherit;font-size:13px;font-weight:bold;color:#fff;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.5);border-radius:8px;padding:5px 10px}
+header h1{padding-right:160px}
+.helpbox{max-width:860px;margin:0 auto;font-size:0.8125rem;color:#38404f}
+.helpbox ul{margin:8px 0 0;padding-left:1.2em}
+.setpanel{background:#fff;border-bottom:1px solid var(--line);padding:12px}
+.setpanel[hidden]{display:none}
+.setrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:860px;margin:0 auto}
+.seg{display:flex;border:1px solid var(--navy);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:0.9375rem;padding:7px 14px;border:0;border-left:1px solid var(--navy);background:#fff;color:var(--navy)}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--navy);color:#fff;font-weight:bold}
+
+.hide{display:none!important}
+.login{position:fixed;inset:0;z-index:30;background:var(--bg);display:flex;align-items:flex-start;justify-content:center;padding:calc(env(safe-area-inset-top) + 40px) 16px 16px;overflow:auto}
+.lbox{width:100%;max-width:420px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+.ltitle{margin:0 0 6px}.lnote{margin:0 0 14px;font-size:13px;color:var(--sub)}
+.lbox label{display:block;font-size:13px;color:var(--sub);margin-bottom:12px}
+.lbox input{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}
+.lbtn{width:100%;font:inherit;font-size:16px;font-weight:bold;padding:11px;border:0;border-radius:10px;background:var(--navy);color:#fff}
+.llink{margin-top:12px;font:inherit;font-size:13px;background:none;border:0;color:var(--navy);text-decoration:underline;padding:0}
+.lmsg{min-height:1.4em;margin:12px 0 0;font-size:13px;color:#8a2a2a}
+.lmsg.ok{color:#1f5a2e}
+.loading{text-align:center;color:var(--sub);padding:40px 0}
+.who{font-size:0.875rem;color:var(--txt);word-break:break-all}
+
+.tbar{display:none;position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 10px);z-index:20;background:#1F3864;color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:0.875rem;line-height:1.6;align-items:center;gap:10px}
+.tbar.on{display:flex}
+.tbar .tx{flex:1}
+.tbar small{display:block;opacity:.85;font-size:0.75rem}
+.tbar button{font:inherit;font-size:0.8125rem;font-weight:bold;border:0;border-radius:8px;padding:8px 12px;background:#fff;color:#1F3864}
+.tbar .x{background:transparent;color:#fff;font-size:1.125rem;padding:4px 6px}
+.ab-share{vertical-align:-2px;margin:0 2px}
+.ver{text-align:center;font-size:0.6875rem;color:var(--sub);margin-top:24px}
+</style></head><body>
+<script>
+(function(){var v=null;try{v=localStorage.getItem('eikyoFs');}catch(e){}if(v)document.documentElement.style.fontSize=(16*parseFloat(v))+'px';})();
+</script>
+<header><div class="hbtns"><button type="button" id="helpBtn" class="setbtn" aria-label="見方">？ 見方</button><button type="button" id="setBtn" class="setbtn" aria-label="設定">⚙︎ 設定</button></div><h1>影響力の武器<br>営業ノウハウ一覧</h1>
+<p>R.B.チャルディーニ『影響力の武器［第二版］』（社会行動研究会訳）より　全177件</p></header>
+<div id="helpPanel" class="setpanel" hidden><div class="helpbox"><span class="lbl">この一覧の見方</span><ul>
+<li>各項目の見出しは「効果（どういった人がどうなるか）」です。タップすると効能・手法・本書の根拠・注意点が開きます。</li>
+<li>掲載ページは本に印刷されたページ番号です。</li>
+<li>「画像確認済」は原本画像で記載を確認したもの、「OCRのみ」は文字認識から要約したもので、数値は含みません。</li>
+<li>本書の事例が営業以外（募金・取調べ・医療など）の場合、効能・効果は営業場面に置き換えて記載しています。置き換え部分は本書の主張ではなく作成者の解釈で、元の事例は「本書の根拠」に記載しています。</li>
+<li>本書が悪用・詐欺の手口として紹介しているものは、見抜き方として掲載し、注意点に記載しています。</li>
+<li>本書の実験は主に米国の研究で、日本の法人保険営業での効果は本書では検証されていません。</li>
+<li>「誰をどうしたいから探す」の分類は、作成者（Claude）が各項目の「効能」をもとに付けたもので、本書の分類ではありません。1つの項目が複数の分類に入ることがあります。</li>
+</ul></div></div>
+<div id="setPanel" class="setpanel" hidden><div class="setrow"><span class="lbl">文字の大きさ</span><div class="seg" id="fsSeg"><button type="button" data-fs="0.875">小</button><button type="button" data-fs="1">標準</button><button type="button" data-fs="1.15">大</button><button type="button" data-fs="1.3">特大</button></div></div>
+<div class="setrow" style="margin-top:12px"><span class="lbl">ログイン中</span><span id="who" class="who"></span><button type="button" class="sbtn" id="logoutBtn">ログアウト</button></div>
+<p class="setnote">お気に入りとメモは、ログインした人ごとに保存されます。同じ人がログインすれば、iPhoneでもiPadでも同じ内容になります。ログアウトすると、この端末に保存した本文の控えも消えます。</p></div>
+<div class="bar"><div class="mode" id="modeSeg"><button type="button" data-mode="goal">誰をどうしたいから探す</button><button type="button" data-mode="ch">章から探す</button></div><input id="q" type="search" placeholder="キーワードで絞り込み（例：紹介、権威、期限）">
+<div class="chips" id="chipRow"><a class="chip on" href="#top" data-ch="0">すべて</a><a class="chip favchip" href="#top" data-ch="fav">★ お気に入り <span id="favN">0</span></a><a class="chip" href="#ch1" data-ch="1">第1章 影響力の武器</a><a class="chip" href="#ch2" data-ch="2">第2章 返報性</a><a class="chip" href="#ch3" data-ch="3">第3章 コミットメントと一貫性</a><a class="chip" href="#ch4" data-ch="4">第4章 社会的証明</a><a class="chip" href="#ch5" data-ch="5">第5章 好意</a><a class="chip" href="#ch6" data-ch="6">第6章 権威</a><a class="chip" href="#ch7" data-ch="7">第7章 希少性</a><a class="chip" href="#ch8" data-ch="8">第8章 手っとり早い影響力</a></div></div>
+<div id="login" class="login hide"><div class="lbox">
+<p class="ltitle"><span class="lbl">ログイン</span></p>
+<p class="lnote">このアプリは、許可された人だけが使えます。</p>
+<form id="lform" autocomplete="on"><label>メールアドレス<input id="lmail" type="email" autocomplete="username" inputmode="email" required></label>
+<label>パスワード<input id="lpass" type="password" autocomplete="current-password" required></label>
+<button type="submit" class="lbtn" id="lgo">ログイン</button></form>
+<button type="button" class="llink" id="lforgot">パスワードを忘れた・初めて設定する</button>
+<p id="lmsg" class="lmsg"></p></div></div>
+<div id="loading" class="loading">読み込み中…</div>
+<main id="top">
+<div id="content"></div>
+<p id="empty" class="hide">該当する項目がありません</p>
+<p id="favEmpty" class="hide" style="text-align:center;color:var(--sub);padding:30px 0">お気に入りはまだありません。各項目の ☆ を押すと、ここに並びます。</p>
+<div id="updateBar" class="tbar"><div class="tx" id="updateText">新しい版があります</div><button type="button" onclick="gApplyUpdate()">いま更新する</button></div>
+<div id="addBar" class="tbar"><div class="tx"><b>ホーム画面に追加すると、アプリとして使えます</b><small id="abHow"></small></div><button type="button" id="abGo" style="display:none">追加する</button><button type="button" class="x" id="abClose" aria-label="閉じる">×</button></div>
+<p class="ver">版：2026-11-04 19:00</p>
+</main>
+<script>
+(function(){
+var btn=document.getElementById('setBtn'),pn=document.getElementById('setPanel'),bs=document.querySelectorAll('#fsSeg button');
+var cur='1';try{cur=localStorage.getItem('eikyoFs')||'1';}catch(e){}
+function mark(){bs.forEach(function(b){b.classList.toggle('on',b.dataset.fs===cur);});}
+mark();
+var hp=document.getElementById('helpPanel');
+btn.addEventListener('click',function(){pn.hidden=!pn.hidden;if(!pn.hidden)hp.hidden=true;});
+document.getElementById('helpBtn').addEventListener('click',function(){hp.hidden=!hp.hidden;if(!hp.hidden)pn.hidden=true;});
+bs.forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.fs;document.documentElement.style.fontSize=(16*parseFloat(cur))+'px';try{localStorage.setItem('eikyoFs',cur);}catch(e){}mark();});});
+})();
+</script>
+<script src="fb.js"></script>
+<script>
+(function(){
+var F=window.FB, CFG={"apiKey": "AIzaSyBYu5SIjY3EUgNMNiqRxA4BgBIaPcdK4Co", "authDomain": "eikyo-knowhow-6638.firebaseapp.com", "projectId": "eikyo-knowhow-6638", "appId": "1:691393459939:web:b2a7056274dc98ad5577d6", "messagingSenderId": "691393459939", "storageBucket": "eikyo-knowhow-6638.firebasestorage.app"};
+var app=F.initializeApp(CFG);
+var auth=F.initializeAuth(app,{persistence:[F.indexedDBLocalPersistence,F.browserLocalPersistence]});
+var db;
+try{db=F.initializeFirestore(app,{localCache:F.persistentLocalCache({tabManager:F.persistentSingleTabManager()})});}
+catch(e){db=F.initializeFirestore(app,{});}
+function $(id){return document.getElementById(id);}
+var loginEl=$('login'),loadEl=$('loading'),contentEl=$('content'),msgEl=$('lmsg');
+function show(el,on){el.classList.toggle('hide',!on);}
+function setMsg(t,ok){msgEl.textContent=t||'';msgEl.classList.toggle('ok',!!ok);}
+function code(e){return (e&&e.code)||'';}
+function errText(e){var c=code(e);
+ if(/invalid-credential|wrong-password|user-not-found|invalid-email|user-disabled/.test(c))return 'メールアドレスかパスワードが違います';
+ if(/too-many-requests/.test(c))return '試行回数が多すぎます。しばらく待ってからお試しください';
+ if(/network/.test(c))return 'ネットに接続できません。接続を確認してください';
+ return 'ログインできませんでした（'+c+'）';}
+$('lform').addEventListener('submit',function(e){e.preventDefault();setMsg('');$('lgo').disabled=true;
+ F.signInWithEmailAndPassword(auth,$('lmail').value.trim(),$('lpass').value)
+  .catch(function(err){setMsg(errText(err));}).then(function(){$('lgo').disabled=false;});});
+$('lforgot').addEventListener('click',function(){var m=$('lmail').value.trim();
+ if(!m){setMsg('先に「メールアドレス」を入力してから押してください');return;}
+ var okMsg='パスワード設定用のメールを送りました（許可されたアドレスにだけ届きます）。届いたメールのリンクから設定してください。';
+ F.sendPasswordResetEmail(auth,m).then(function(){setMsg(okMsg,true);})
+  .catch(function(err){if(/network/.test(code(err)))setMsg(errText(err));else setMsg(okMsg,true);});});
+$('logoutBtn').addEventListener('click',function(){
+ if(!confirm('ログアウトしますか？（この端末に保存した本文の控えも消えます）'))return;
+ if(unsub)unsub();
+ F.signOut(auth).then(function(){return F.terminate(db);}).then(function(){return F.clearIndexedDbPersistence(db);})
+  .catch(function(){}).then(function(){location.reload();});});
+
+var user=null,unsub=null,ui=null,rendered=false;
+var st={fav:{},memo:{}},firstSnap=true;
+function uref(){return F.doc(db,'users',user.uid);}
+var hooks={
+ st:function(){return st;},
+ fav:function(id,on){var f={};for(var k in st.fav)f[k]=st.fav[k];if(on)f[id]=true;else delete f[id];st.fav=f;
+  var o={fav:{}};o.fav[id]=on?true:F.deleteField();F.setDoc(uref(),o,{merge:true}).catch(function(){});},
+ memo:function(id,v){var m={};for(var k in st.memo)m[k]=st.memo[k];if(v.trim())m[id]=v;else delete m[id];st.memo=m;
+  var o={memo:{}};o.memo[id]=v.trim()?v:F.deleteField();F.setDoc(uref(),o,{merge:true}).catch(function(){});}
+};
+function migrate(){var v=null;try{v=JSON.parse(localStorage.getItem('eikyoUser')||'null');}catch(e){}
+ if(!v)return;var lf={},lm={};
+ if(v.people){var p=v.people[v.cur]||v.people[Object.keys(v.people)[0]];if(p){lf=p.fav||{};lm=p.memo||{};}}else{lf=v.fav||{};lm=v.memo||{};}
+ var o={fav:{},memo:{}},n=0;
+ Object.keys(lf).forEach(function(k){if(!st.fav[k]){o.fav[k]=true;n++;}});
+ Object.keys(lm).forEach(function(k){if(lm[k]&&String(lm[k]).trim()&&!st.memo[k]){o.memo[k]=lm[k];n++;}});
+ var done=function(){try{localStorage.removeItem('eikyoUser');}catch(e){}};
+ if(n)F.setDoc(uref(),o,{merge:true}).then(done).catch(function(){});else done();}
+function startSync(){if(unsub)return;
+ unsub=F.onSnapshot(uref(),function(s){var d=s.exists()?s.data():{};st={fav:d.fav||{},memo:d.memo||{}};
+  if(firstSnap){firstSnap=false;migrate();}
+  if(ui)ui.repaint();},function(){});}
+function render(d){if(rendered)return;rendered=true;contentEl.innerHTML=d.html;show(loadEl,false);ui=initUI(d.goals,hooks);startSync();}
+function fail(err){if(rendered)return;var c=code(err);
+ if(/permission-denied/.test(c)){F.signOut(auth);show(loadEl,false);show(loginEl,true);setMsg('このアカウントには閲覧の許可がありません');return;}
+ loadEl.textContent=/unavailable|offline/.test(c)||!navigator.onLine?'ネットに接続できないため、本文を読み込めませんでした。初めて開くときは、ネットに接続した状態で開いてください。':'読み込みに失敗しました（'+(c||(err&&err.message)||'')+'）';
+ show(loadEl,true);}
+F.onAuthStateChanged(auth,function(u){user=u;
+ if(!u){show(loadEl,false);show(loginEl,true);return;}
+ show(loginEl,false);if(!rendered)show(loadEl,true);$('who').textContent=u.email||'';
+ var ref=F.doc(db,'content','main');
+ F.getDocFromCache(ref).then(function(s){if(s.exists())render(s.data());}).catch(function(){})
+  .then(function(){return F.getDocFromServer(ref);})
+  .then(function(s){if(!s.exists())throw {code:'no-content'};render(s.data());})
+  .catch(fail);});
+
+function initUI(GOALS,H){
+var S=H.st;
+var q=document.getElementById('q'),chips=document.querySelectorAll('.chip'),cards=document.querySelectorAll('.card'),secs=document.querySelectorAll('.chap'),cur='0';
+var mode='goal',gSel=null;try{if(localStorage.getItem('eikyoMode')==='ch')mode='ch';}catch(e){}
+var modeBs=document.querySelectorAll('#modeSeg button'),pick=document.getElementById('goalPick'),gHead=document.getElementById('goalHead'),chipRow=document.getElementById('chipRow');
+function setMode(m){mode=m;gSel=null;try{localStorage.setItem('eikyoMode',m);}catch(e){}modeBs.forEach(function(b){b.classList.toggle('on',b.dataset.mode===m);});chipRow.style.display=m==='ch'?'':'none';apply();window.scrollTo(0,0);}
+modeBs.forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode);});});
+document.querySelectorAll('.gp').forEach(function(b){b.addEventListener('click',function(){gSel=b.dataset.g;apply();window.scrollTo(0,0);});});
+document.getElementById('goalBack').addEventListener('click',function(){gSel=null;apply();window.scrollTo(0,0);});
+function paint(){var st=S(),n=0;cards.forEach(function(c){var id=c.dataset.id,f=!!st.fav[id],b=c.querySelector('.fav');b.classList.toggle('on',f);b.textContent=f?'★':'☆';b.setAttribute('aria-pressed',f?'true':'false');if(f)n++;
+ var m=st.memo[id]||'';c.classList.toggle('memo-on',!!String(m).trim());var ta=c.querySelector('.memo-in');if(document.activeElement!==ta)ta.value=m;});document.getElementById('favN').textContent=n;}
+function apply(){var st=S(),t=q.value.trim().toLowerCase(),n=0;
+ var showPick=mode==='goal'&&!gSel&&!t;pick.classList.toggle('hide',!showPick);gHead.classList.toggle('hide',!(mode==='goal'&&gSel));
+ if(mode==='goal'&&gSel){document.getElementById('ghWho').textContent=GOALS[gSel][0];document.getElementById('ghHow').textContent=GOALS[gSel][1];}
+ cards.forEach(function(c){var id=c.dataset.id;var inCh;
+  if(mode==='goal'){inCh=!showPick&&(!gSel||(' '+c.dataset.g+' ').indexOf(' '+gSel+' ')>=0);}
+  else inCh=cur==='0'||(cur==='fav'?!!st.fav[id]:c.dataset.ch===cur);
+  var hay=(c.dataset.q+' '+(st.memo[id]||'')).toLowerCase();var ok=inCh&&(!t||hay.indexOf(t)>=0);c.classList.toggle('hide',!ok);if(ok)n++;});
+ secs.forEach(function(s){var k=s.querySelectorAll('.card:not(.hide)').length;s.classList.toggle('hide',!k);s.querySelector('.cnt').textContent=k+'件';});
+ var fe=mode==='ch'&&cur==='fav'&&!t&&n===0;document.getElementById('favEmpty').classList.toggle('hide',!fe);
+ if(mode==='goal'&&gSel)document.getElementById('ghN').textContent=n+'件';
+ document.getElementById('empty').classList.toggle('hide',n>0||fe||showPick);}
+q.addEventListener('input',apply);
+chips.forEach(function(ch){ch.addEventListener('click',function(e){e.preventDefault();cur=ch.dataset.ch;chips.forEach(function(x){x.classList.toggle('on',x===ch);});apply();window.scrollTo(0,0);});});
+cards.forEach(function(c){var id=c.dataset.id;
+ c.querySelector('.fav').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();H.fav(id,!S().fav[id]);paint();if(cur==='fav')apply();});
+ var ta=c.querySelector('.memo-in'),sv=c.querySelector('.saved'),tm=null;
+ ta.addEventListener('input',function(){var v=ta.value;clearTimeout(tm);tm=setTimeout(function(){H.memo(id,v);
+  sv.textContent=navigator.onLine?'保存しました':'保存しました（ネットにつながったときに同期します）';sv.classList.add('on');setTimeout(function(){sv.classList.remove('on');},1500);c.classList.toggle('memo-on',!!v.trim());},600);});
+});
+paint();setMode(mode);
+return {repaint:function(){paint();if(cur==='fav'||q.value.trim())apply();}};
+}
+})();
+
+</script>
+<script>
+// ホーム画面に追加したあと、オフラインでも起動できるようにする。
+// 送信はしません。読み込むのは「このアプリを配信している場所の version.json」だけです。更新は手動（ボタンを押したときだけ）。
+(function(){
+  if(location.protocol.indexOf('http') !== 0) return;
+  var reg=null, mb=document.querySelector('meta[name="app-build"]'), MY=mb?mb.content:'';
+  function esc(x){return String(x==null?'':x).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function showBar(v,n){var b=document.getElementById('updateBar');if(!b)return;document.getElementById('updateText').innerHTML='新しい版があります'+(v?'（<b>'+esc(v)+'</b>）':'')+(n?'<small>'+esc(n)+'</small>':'');document.getElementById('addBar').classList.remove('on');b.classList.add('on');}
+  function clearBar(){var b=document.getElementById('updateBar');if(b)b.classList.remove('on');}
+  function checkVersion(){
+    if(!navigator.onLine) return;
+    fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      if(!j||!j.build) return;
+      if(String(j.build)!==String(MY)) showBar(j.build,j.note||''); else clearBar();
+    }).catch(function(){});
+  }
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(r){
+        reg=r;
+        r.addEventListener('updatefound',function(){var nw=r.installing;if(!nw)return;nw.addEventListener('statechange',function(){if(nw.state==='installed')checkVersion();});});
+        r.update().catch(function(){}); checkVersion();
+      }).catch(function(){checkVersion();});
+    });
+    var reloading=false;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){if(reloading)return;reloading=true;clearBar();location.reload();});
+  } else { window.addEventListener('load',checkVersion); }
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){if(reg)reg.update().catch(function(){});checkVersion();}});
+  window.gApplyUpdate=function(){clearBar();if(reg&&reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});setTimeout(function(){location.reload();},400);}else location.reload();};
+})();
+</script>
+<script>
+// ホーム画面への追加の案内。すでに追加して開いている場合や、一度閉じた場合は出さない。
+(function(){
+  function onHome(){try{if(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)return true;}catch(e){}return navigator.standalone===true;}
+  if(location.protocol.indexOf('http')!==0||onHome()) return;
+  try{if(localStorage.getItem('eikyoAddHide')==='1')return;}catch(e){}
+  var bar=document.getElementById('addBar'),how=document.getElementById('abHow'),go=document.getElementById('abGo'),cl=document.getElementById('abClose');
+  var ua=navigator.userAgent||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var isPad=/iPad/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var deferred=null;
+  var SHARE='<svg class="ab-share" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M8.4 6.6 12 3l3.6 3.6"/><path d="M5.5 12v7a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-7"/></svg>';
+  function hide(rem){bar.classList.remove('on');if(rem){try{localStorage.setItem('eikyoAddHide','1');}catch(e){}}}
+  function show(){var up=document.getElementById('updateBar');if(up&&up.classList.contains('on'))return;bar.classList.add('on');}
+  cl.addEventListener('click',function(){hide(true);});
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;how.textContent='右の「追加する」を押すだけです。';go.style.display='';setTimeout(show,600);});
+  go.addEventListener('click',function(){if(!deferred)return;deferred.prompt();deferred.userChoice.then(function(){hide(true);deferred=null;});});
+  window.addEventListener('appinstalled',function(){hide(true);});
+  var inApp=/(CriOS|FxiOS|EdgiOS|OPiOS|Line\/|FBAN|FBAV|FB_IAB|Instagram|Twitter|MicroMessenger)/i.test(ua);
+  if(isIOS&&inApp){how.innerHTML='このままでは追加できません。メニューから <b>「Safariで開く」</b> を選んでから、<b>共有</b> →<b>「ホーム画面に追加」</b>を押してください。';setTimeout(show,1500);}
+  else if(isIOS){how.innerHTML=(isPad?'画面右上の ':'画面下の ')+'<b>共有'+SHARE+'</b> を押して、<b>「ホーム画面に追加」</b>を選んでください。';setTimeout(show,1500);}
+})();
+</script>
+</body></html>

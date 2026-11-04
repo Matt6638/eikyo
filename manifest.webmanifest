@@ -1,0 +1,25 @@
+{
+  "name": "影響力の武器 営業ノウハウ一覧",
+  "short_name": "影響力の武器",
+  "description": "『影響力の武器［第二版］』から営業に使えるノウハウを整理した自分用の一覧（オフラインでも動きます）",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f5f8",
+  "theme_color": "#1F3864",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
